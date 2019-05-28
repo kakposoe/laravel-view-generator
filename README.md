@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/kakposoe/laravel-view-generator.svg?branch=master)](https://travis-ci.org/kakposoe/laravel-view-generator)
 [![StyleCI](https://styleci.io/repos/189003998/shield?branch=master)](https://styleci.io/repos/189003998)
 
-Laravel View Generator is adds the missing `make:view` command to laravel's commands. You can quickly create new views for your application.
+Laravel View Generator adds the missing `make:view` command to laravel's commands. You can quickly create new views for your application.
 
 ## Installation
 
@@ -14,10 +14,7 @@ composer require kakposoe/laravel-view-generator
 
 ### Register Service Provider
 
-**Note! This and next step are optional if you use laravel>=5.5 with package
-auto discovery feature.**
-
-Add service provider to `config/app.php` in `providers` section
+If you use laravel < 5.5, Add service provider to `config/app.php` in `providers` section
 ```php
 Kakposoe\LaravelViewGenerator\LaravelViewGeneratorServiceProvider::class,
 ```
@@ -33,7 +30,7 @@ This command will create `/resources/views/index.blade.php`
 
 
 ## Create a view inside a folder
-You can create a view in a folder by using `dot` notation;
+You can create a view in a folder by using `dot` notation:
 
 ```bash
 php artisan make:view admin.index
@@ -48,7 +45,7 @@ You can create a view which extends a layout using:
 php artisan make:view index --layout=admin
 ```
 
-**Note:* *You will be prompted to create a `layouts` folders and the `layout` file if they do not exist.
+**Note:** *You will be prompted to create a `layouts` folder and the `layout` file if they do not exist.
 
 ## Create a view with sections
 You can create a new view file with sections:
