@@ -78,7 +78,7 @@ class LaravelViewGeneratorTest extends TestCase
 
         $this->rmdirRecursive($viewsDir);
 
-        mkdir($viewsDir);
+        mkdir($viewsDir, 0777, true);
     }
 
     protected function rmdirRecursive($dir)
