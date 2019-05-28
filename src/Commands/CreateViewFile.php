@@ -11,7 +11,7 @@ class CreateViewFile extends Command
      *
      * @var string
      */
-    protected $signature = 'make:view {path} {--layout=}';
+    protected $signature = 'make:view {path} {--layout=} {--section=*}';
 
     /**
      * The console command description.
@@ -87,7 +87,7 @@ class CreateViewFile extends Command
         $fileName = "{$baseDir}/{$fileName}";
 
         if (file_exists($fileName)) {
-            $this->warn('File name already exists.');
+            $this->warn('File already exists.');
             return false;
         }
 
@@ -122,6 +122,14 @@ class CreateViewFile extends Command
         if ($this->option('layout')) {
             $template  = file_get_contents(__DIR__ . '/../Templates/layout.php');
             $content  .= preg_replace('/\{\{([\s]?\$layout)[\s]?\}\}/', $this->option('layout'), $template);
+        }
+
+        if (!empty($this->option('section'))) {
+            $template  = file_get_contents(__DIR__ . '/../Templates/section.php');
+
+            collect($this->option('section'))->each(function ($value, $key) use ($template, &$content) {
+                $content .= preg_replace('/\{\{([\s]?\$section)[\s]?\}\}/', $value, $template);
+            });
         }
 
         return $content;

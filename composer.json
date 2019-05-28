@@ -2,16 +2,12 @@
   "name": "kakposoe/laravel-view-generator",
   "description": "A laravel view generator",
   "license": "MIT",
-  "keywords": [
-    "laravel",
-    "view",
-    "generator"
-  ],
+  "keywords": [ "laravel", "view", "generator" ],
   "type": "library",
   "authors": [
     {
-      "name": "",
-      "email": ""
+      "name": "Kelvin Akposoe",
+      "email": "kakposoe@gmail.com"
     }
   ],
   "require": {
