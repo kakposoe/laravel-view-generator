@@ -1,0 +1,53 @@
+{
+  "name": "kakposoe/laravel-view-generator",
+  "description": "A laravel view generator",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "view",
+    "generator"
+  ],
+  "type": "library",
+  "authors": [
+    {
+      "name": "",
+      "email": ""
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "illuminate/support": "~5.8.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "~3.8.0",
+    "phpunit/phpunit": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kakposoe\\LaravelViewGenerator\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Kakposoe\\LaravelViewGenerator\\Tests\\": "tests"
+    },
+    "files": [
+      "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+    ]
+  },
+  "scripts": {
+    "phpunit": "phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Kakposoe\\LaravelViewGenerator\\LaravelViewGeneratorServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
