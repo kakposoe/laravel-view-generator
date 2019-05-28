@@ -57,7 +57,11 @@ class CreateViewFile extends Command
 
         $paths = explode('.', $this->argument('path'));
 
-        $fileName  = $paths[count($paths) - 1] . '.blade.php';
+        $fileName  = $paths[count($paths) - 1];
+
+        if (strpos($fileName, '.blade.php') == false) {
+            $fileName .= '.blade.php';
+        }
 
         unset($paths[count($paths) - 1]);
 
@@ -113,9 +117,11 @@ class CreateViewFile extends Command
 
     protected function getContent()
     {
+        $content = '';
+
         if ($this->option('layout')) {
-            $content = file_get_contents(__DIR__ . '/../Templates/layout.php');
-            $content = preg_replace('/\{\{([\s]?\$layout)[\s]?\}\}/', $this->option('layout'), $content);
+            $template  = file_get_contents(__DIR__ . '/../Templates/layout.php');
+            $content  .= preg_replace('/\{\{([\s]?\$layout)[\s]?\}\}/', $this->option('layout'), $template);
         }
 
         return $content;
