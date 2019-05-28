@@ -2,9 +2,9 @@
 
 namespace Kakposoe\LaravelViewGenerator\Tests;
 
+use Orchestra\Testbench\TestCase;
 use Kakposoe\LaravelViewGenerator\Facades\LaravelViewGenerator;
 use Kakposoe\LaravelViewGenerator\LaravelViewGeneratorServiceProvider as ServiceProvider;
-use Orchestra\Testbench\TestCase;
 
 class LaravelViewGeneratorTest extends TestCase
 {
@@ -27,7 +27,7 @@ class LaravelViewGeneratorTest extends TestCase
 
         $this->artisan('make:view index')->assertExitCode(0);
 
-        $this->assertTrue(file_exists(getcwd() . '/resources/views/index.blade.php'));
+        $this->assertTrue(file_exists(getcwd().'/resources/views/index.blade.php'));
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class LaravelViewGeneratorTest extends TestCase
 
         $this->artisan('make:view admin.index')->assertExitCode(0);
 
-        $this->assertTrue(file_exists(getcwd() . '/resources/views/admin/index.blade.php'));
+        $this->assertTrue(file_exists(getcwd().'/resources/views/admin/index.blade.php'));
     }
 
     /** @test */
@@ -50,11 +50,11 @@ class LaravelViewGeneratorTest extends TestCase
             ->expectsQuestion('Layout file does not exist, create?', 'yes')
             ->assertExitCode(0);
 
-        $this->assertTrue(file_exists(getcwd() . '/resources/views/layouts/admin.blade.php'));
+        $this->assertTrue(file_exists(getcwd().'/resources/views/layouts/admin.blade.php'));
 
-        $this->assertTrue(file_exists(getcwd() . '/resources/views/admin/index.blade.php'));
+        $this->assertTrue(file_exists(getcwd().'/resources/views/admin/index.blade.php'));
 
-        $this->assertContains("@extends('layouts.admin')", file_get_contents(getcwd() . '/resources/views/admin/index.blade.php'));
+        $this->assertContains("@extends('layouts.admin')", file_get_contents(getcwd().'/resources/views/admin/index.blade.php'));
     }
 
     /** @test */
@@ -65,30 +65,33 @@ class LaravelViewGeneratorTest extends TestCase
         $this->artisan('make:view index --section=content --section=styles')
             ->assertExitCode(0);
 
-        $this->assertTrue(file_exists(getcwd() . '/resources/views/index.blade.php'));
+        $this->assertTrue(file_exists(getcwd().'/resources/views/index.blade.php'));
 
         foreach (['content', 'styles'] as $section) {
-            $this->assertContains("@section({$section})", file_get_contents(getcwd() . '/resources/views/index.blade.php'));
+            $this->assertContains("@section({$section})", file_get_contents(getcwd().'/resources/views/index.blade.php'));
         }
     }
 
     protected function refreshViewsDirectory()
     {
-        $viewsDir = getcwd() . '/resources/views';
-    
+        $viewsDir = getcwd().'/resources/views';
+
         $this->rmdirRecursive($viewsDir);
 
         mkdir($viewsDir);
     }
 
-
-
     protected function rmdirRecursive($dir)
     {
-        foreach(scandir($dir) as $file) {
-            if ('.' === $file || '..' === $file) continue;
-            if (is_dir("$dir/$file")) $this->rmdirRecursive("$dir/$file");
-            else unlink("$dir/$file");
+        foreach (scandir($dir) as $file) {
+            if ('.' === $file || '..' === $file) {
+                continue;
+            }
+            if (is_dir("$dir/$file")) {
+                $this->rmdirRecursive("$dir/$file");
+            } else {
+                unlink("$dir/$file");
+            }
         }
         rmdir($dir);
     }

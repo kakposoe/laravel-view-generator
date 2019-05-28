@@ -7,7 +7,7 @@ use Kakposoe\LaravelViewGenerator\Commands\CreateViewFile;
 
 class LaravelViewGeneratorServiceProvider extends ServiceProvider
 {
-    const CONFIG_PATH = __DIR__ . '/../config/laravel-view-generator.php';
+    const CONFIG_PATH = __DIR__.'/../config/laravel-view-generator.php';
 
     public function boot()
     {

@@ -2,5 +2,6 @@
 
 namespace Kakposoe\LaravelViewGenerator;
 
-class LaravelViewGenerator{
+class LaravelViewGenerator
+{
 }
