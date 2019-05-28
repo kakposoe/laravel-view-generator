@@ -83,7 +83,7 @@ class LaravelViewGeneratorTest extends TestCase
 
     protected function rmdirRecursive($dir)
     {
-        if (! file_exist($dir)) {
+        if (! file_exists($dir)) {
             return;
         }
 
