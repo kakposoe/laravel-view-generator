@@ -40,7 +40,7 @@ class CreateViewFile extends Command
      */
     public function handle()
     {
-        list($baseDir, $fileName) = $this->getPaths();
+        [$baseDir, $fileName] = $this->getPaths();
 
         $this->createDirectory($baseDir);
 
@@ -53,11 +53,11 @@ class CreateViewFile extends Command
 
     protected function getPaths()
     {
-        $this->viewsDir = getcwd() . '/resources/views';
+        $this->viewsDir = getcwd().'/resources/views';
 
         $paths = explode('.', $this->argument('path'));
 
-        $fileName  = $paths[count($paths) - 1];
+        $fileName = $paths[count($paths) - 1];
 
         if (strpos($fileName, '.blade.php') == false) {
             $fileName .= '.blade.php';
@@ -66,8 +66,8 @@ class CreateViewFile extends Command
         unset($paths[count($paths) - 1]);
 
         return [
-            $this->viewsDir . '/' . implode('/', $paths),
-            $fileName
+            $this->viewsDir.'/'.implode('/', $paths),
+            $fileName,
         ];
     }
 
@@ -88,17 +88,18 @@ class CreateViewFile extends Command
 
         if (file_exists($fileName)) {
             $this->warn('File already exists.');
+
             return false;
         }
 
         file_put_contents($fileName, $this->getContent());
 
-        $this->info('File created: ' . $fileName);
+        $this->info('File created: '.$fileName);
     }
 
     protected function layouts()
     {
-        $layoutsPath = $this->viewsDir . '/layouts/';
+        $layoutsPath = $this->viewsDir.'/layouts/';
 
         if (! file_exists($layoutsPath)) {
             if ($this->confirm('Layouts folder does not exist, create?')) {
@@ -106,7 +107,7 @@ class CreateViewFile extends Command
             }
         }
 
-        $path = $layoutsPath . str_replace('.', '/', $this->option('layout')) . '.blade.php';
+        $path = $layoutsPath.str_replace('.', '/', $this->option('layout')).'.blade.php';
 
         if (! file_exists($path)) {
             if ($this->confirm('Layout file does not exist, create?')) {
@@ -120,12 +121,12 @@ class CreateViewFile extends Command
         $content = '';
 
         if ($this->option('layout')) {
-            $template  = file_get_contents(__DIR__ . '/../Templates/layout.php');
-            $content  .= preg_replace('/\{\{([\s]?\$layout)[\s]?\}\}/', $this->option('layout'), $template);
+            $template = file_get_contents(__DIR__.'/../Templates/layout.php');
+            $content .= preg_replace('/\{\{([\s]?\$layout)[\s]?\}\}/', $this->option('layout'), $template);
         }
 
-        if (!empty($this->option('section'))) {
-            $template  = file_get_contents(__DIR__ . '/../Templates/section.php');
+        if (! empty($this->option('section'))) {
+            $template = file_get_contents(__DIR__.'/../Templates/section.php');
 
             collect($this->option('section'))->each(function ($value, $key) use ($template, &$content) {
                 $content .= preg_replace('/\{\{([\s]?\$section)[\s]?\}\}/', $value, $template);
