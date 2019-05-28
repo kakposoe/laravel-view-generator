@@ -83,6 +83,10 @@ class LaravelViewGeneratorTest extends TestCase
 
     protected function rmdirRecursive($dir)
     {
+        if (! file_exist($dir)) {
+            return;
+        }
+
         foreach (scandir($dir) as $file) {
             if ('.' === $file || '..' === $file) {
                 continue;
