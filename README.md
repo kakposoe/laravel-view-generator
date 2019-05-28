@@ -1,7 +1,9 @@
 # Laravel View Generator
 
+https://github.styleci.io/repos/189003998/shield
+
 [![Build Status](https://travis-ci.org/kakposoe/laravel-view-generator.svg?branch=master)](https://travis-ci.org/kakposoe/laravel-view-generator)
-[![styleci](https://github.styleci.io/repos/189003998/shield](https://styleci.io/repos/CHANGEME)
+[![StyleCI](https://styleci.io/repos/189003998/shield?branch=master)](https://styleci.io/repos/189003998)
 
 ## Installation
 
