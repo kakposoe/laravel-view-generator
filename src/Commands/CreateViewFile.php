@@ -44,7 +44,7 @@ class CreateViewFile extends Command
 
         $this->createDirectory($baseDir);
 
-        if (! $this->createFile($fileName, $baseDir)) {
+        if (! $this->createFile($baseDir.$fileName)) {
             return;
         }
 
@@ -78,23 +78,21 @@ class CreateViewFile extends Command
         }
     }
 
-    protected function createFile($fileName, $baseDir)
+    protected function createFile($filePath)
     {
         if ($this->option('layout')) {
             $this->layouts();
         }
 
-        $fileName = "{$baseDir}/{$fileName}";
-
-        if (file_exists($fileName)) {
+        if (file_exists($filePath)) {
             $this->warn('File already exists.');
 
             return false;
         }
 
-        file_put_contents($fileName, $this->getContent());
+        file_put_contents($filePath, $this->getContent());
 
-        $this->info('File created: '.$fileName);
+        $this->info('File created: '.$filePath);
     }
 
     protected function layouts()
