@@ -3,6 +3,7 @@
 namespace Kakposoe\LaravelViewGenerator\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class CreateViewFile extends Command
 {
@@ -65,10 +66,9 @@ class CreateViewFile extends Command
 
         unset($paths[count($paths) - 1]);
 
-        return [
-            $this->viewsDir.'/'.implode('/', $paths),
-            $fileName,
-        ];
+        $basePath = $this->viewsDir.'/'.implode('/', $paths);
+
+        return [Str::finish($basePath, '/'), $fileName];
     }
 
     protected function createDirectory($baseDir)
