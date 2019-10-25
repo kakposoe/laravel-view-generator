@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/kakposoe/laravel-view-generator.svg?branch=master)](https://travis-ci.org/kakposoe/laravel-view-generator)
 [![StyleCI](https://styleci.io/repos/189003998/shield?branch=master)](https://styleci.io/repos/189003998)
 
-Laravel View Generator adds the missing `make:view` command to laravel's commands. You can quickly create new views for your application.
+Laravel View Generator adds the missing `make:view` command to Laravel's commands. You can quickly create new views for your application.
 
 ## Installation
 
@@ -14,7 +14,7 @@ composer require kakposoe/laravel-view-generator
 
 ### Register Service Provider
 
-If you use laravel < 5.5, Add service provider to `config/app.php` in `providers` section
+If you use Laravel < 5.5, Add service provider to `config/app.php` in `providers` section
 ```php
 Kakposoe\LaravelViewGenerator\LaravelViewGeneratorServiceProvider::class,
 ```
