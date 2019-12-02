@@ -2,9 +2,9 @@
 
 namespace Kakposoe\LaravelViewGenerator\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Kakposoe\LaravelViewGenerator\Facades\LaravelViewGenerator;
 use Kakposoe\LaravelViewGenerator\LaravelViewGeneratorServiceProvider as ServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 class LaravelViewGeneratorTest extends TestCase
 {

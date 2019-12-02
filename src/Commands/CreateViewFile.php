@@ -2,8 +2,8 @@
 
 namespace Kakposoe\LaravelViewGenerator\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class CreateViewFile extends Command
 {
